@@ -18,7 +18,7 @@ struct TodoApp {
 
 impl TodoApp {
     fn save_tasks(&self) {
-        if let Ok(file) = OpenOptions::new().create(true).write(true).truncate(true).open("tasks.json") {
+        if let Ok(file) = OpenOptions::new().write(true).truncate(true).open("tasks.json") {
             serde_json::to_writer(file, &self.tasks).expect("Не вдалось записати у файл");
         }
     }
